@@ -21,7 +21,7 @@ ami_clean_args = {
 def ami_rawfile_quicklook(filename, ami_dir, casa_dir, output_dir):
     """A data reduction subroutine (specific to user's application)."""
     rawfile = os.path.basename(filename)
-    reduce = driveami.Reduce(ami_dir)
+    reduce = driveami.Reduce(ami_dir, ami_version='digital')
     groupname = rawfile.split('-')[0]
     group_dir = os.path.join(output_dir, groupname)
     group_ami_outdir = os.path.join(group_dir, 'ami')
@@ -38,7 +38,7 @@ def ami_rawfile_quicklook(filename, ami_dir, casa_dir, output_dir):
                                  out_dir=image_casa_outdir,
                                  overwrite=True)
         dirty_maps = drivecasa.commands.clean(casa_script,
-                 vis_path=vis,
+                 vis_paths=vis,
                  niter=200,
                  threshold_in_jy=2.5 * obs_info[amikeys.est_noise_jy],
                  mask='',

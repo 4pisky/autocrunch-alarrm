@@ -33,15 +33,17 @@ if __name__ == "__main__":
     logger = logging.getLogger()
     logger.addHandler(log_stdout)
     pool = multiprocessing.Pool(1)
-    args = ['DEL2013-130927.raw',
+    args = ['V404CYG-160121.raw',
             default_ami_dir,
             default_casa_dir,
             default_output_dir]
 
-    # return_message = ami_rawfile_quicklook(*args)
-    return_message = pool.apply_async(ami_rawfile_quicklook,
-                                      args=args, callback=processed_callback)
-    print return_message.get(timeout=1200)
+    return_message = ami_rawfile_quicklook(*args)
+    print return_message
+    # return_message = pool.apply_async(ami_rawfile_quicklook,
+    #                                   args=args, callback=processed_callback)
+    # print return_message.get(timeout=1200)
+
     #    for listing in single_file_listings:
     #        result = pool.apply_async(process_dataset, [listing])
     #    print result.get(timeout=1200)
