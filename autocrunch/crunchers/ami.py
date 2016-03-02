@@ -7,7 +7,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 ami_clean_args = {
-          "spw": '0:0~5',
           "imsize": [512, 512],
           "cell": ['5.0arcsec'],
           "pbcor": False,

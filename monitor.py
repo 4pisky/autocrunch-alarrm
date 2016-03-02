@@ -22,10 +22,14 @@ logger = logging.getLogger()
 
 class options():
     """Dummy class serving as a placeholder for optparse handling."""
-    ami = "/data2/ami"
-#    ami = "/home/djt/ami"
-    casa = '/opt/soft/builds/casa-release-4.3.0-el6'
-    output_dir = "/home/ts3e11/autocrunch_test"
+
+    output_dir = os.environ.get('AUTOCRUNCH_OUTPUT_DIR',
+                                    os.path.expanduser("~/ami_test"))
+    ami = os.environ.get('AUTOCRUNCH_AMI_DIR',
+                                     '/home/amicamb/ami')
+    casa = os.environ.get('AUTOCRUNCH_CASA_DIR',
+                              '/home/soft/misc/builds/casa-release-4.5.0-el6')
+
 #    log_dir = '/tmp/autocruncher'
     log_dir = output_dir
     nthreads = 4

@@ -8,7 +8,7 @@ install_requires = ['drive-ami',
 
 setup(
     name="autocrunch",
-    version="0.2.2",
+    version="0.2.3",
     packages=['autocrunch'],
     description="Automatically process incoming files.",
     author="Tim Staley",

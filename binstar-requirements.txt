@@ -1,5 +1,0 @@
---index-url https://pypi.binstar.org/timstaley/simple 
-#Binstar packages:
-drive-ami
-
-
