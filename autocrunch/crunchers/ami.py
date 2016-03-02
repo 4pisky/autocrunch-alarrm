@@ -21,14 +21,18 @@ ami_clean_args = {
 def ami_rawfile_quicklook(filename, ami_dir, casa_dir, output_dir):
     """A data reduction subroutine (specific to user's application)."""
     rawfile = os.path.basename(filename)
-    reduce = driveami.Reduce(ami_dir, ami_version='digital')
+
     groupname = rawfile.split('-')[0]
     group_dir = os.path.join(output_dir, groupname)
     group_ami_outdir = os.path.join(group_dir, 'ami')
     group_casa_outdir = os.path.join(group_dir, 'casa')
     group_fits_outdir = os.path.join(group_dir, 'images')
     try:
-        obs_info = driveami.process_rawfile(rawfile, group_ami_outdir, reduce)
+        with driveami.Reduce(ami_dir,
+                             ami_version=driveami.AmiVersion.digital) as reduce:
+            obs_info = driveami.process_rawfile(
+                rawfile, group_ami_outdir, reduce,
+                script=driveami.scripts.standard_digital_reduction)
         image_casa_outdir = os.path.join(group_casa_outdir,
                                          obs_info[amikeys.obs_name])
         casa_logfile = os.path.join(group_casa_outdir, 'casalog.txt')

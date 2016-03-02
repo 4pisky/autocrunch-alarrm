@@ -1,5 +1,5 @@
-pexpect==2.4
+pexpect>=4.0.1
 pyinotify
-drive-ami>=1.0
+drive-ami>=1.0.3
 drive-casa
 astropy
