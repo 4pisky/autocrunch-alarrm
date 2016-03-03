@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-activate_this = '/home/ts3e11/.virtualenvs/autocruncher/bin/activate_this.py'
-execfile(activate_this, dict(__file__=activate_this))
-
 """
 A working (and used!) example of using pyinotify to trigger data reduction.
 
