@@ -29,7 +29,8 @@ class options():
 
 #    log_dir = '/tmp/autocruncher'
     log_dir = output_dir
-    nthreads = 4
+    nthreads = int(os.environ.get('AUTOCRUNCH_NTHREADS',
+                              '2'))
 
 def main(options):
     """Define processing logic and fire up the watcher"""
